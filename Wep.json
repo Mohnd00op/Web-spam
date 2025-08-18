@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/Malik", "destination": "/about.html" },
+    { "source": "/Terbo", "destination": "/contact.html" }
+  ]
+}

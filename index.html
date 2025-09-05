@@ -171,47 +171,29 @@
   box-shadow: 0 0 30px #ff0000, 0 0 60px #ff0000, 0 0 90px #ff0000;
 }
 
-    #intro {
-  position: fixed;
-  inset: 0;
-  background: #000; /* خلفية وقت الانترو */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 9999;
-  overflow: hidden;
-}
+      #intro {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      overflow: hidden;
+    }
 
-.intro-logo {
-  width: 200px; /* حجم الصورة */
-  z-index: 2;
-  opacity: 0;
-  animation: logoFade 1s ease forwards 0.5s;
-}
+    .intro-logo {
+      width: 250px;          /* حجم البداية */
+      opacity: 0;
+      transform: scale(0.7); /* صغير في البداية */
+      animation: logoZoom 2s ease forwards;
+    }
 
-.curtain {
-  position: absolute;
-  top: 0;
-  width: 50%;
-  height: 100%;
-  background: #000;
-  z-index: 3;
-}
-
-.curtain.left { left: 0; }
-.curtain.right { right: 0; }
-
-@keyframes logoFade {
-  to { opacity: 1; }
-}
-
-@keyframes curtainOpenLeft {
-  to { transform: translateX(-100%); }
-}
-
-@keyframes curtainOpenRight {
-  to { transform: translateX(100%); }
-}
+    @keyframes logoZoom {
+      0% { opacity: 0; transform: scale(0.7); }
+      50% { opacity: 1; transform: scale(1); }
+      100% { opacity: 1; transform: scale(1.5); } /* تكبير زي نتفليكس */
+    }
 
   #floatingBtn {
   position: fixed;
@@ -577,16 +559,12 @@ const toggleBtn = document.getElementById('dashboardToggleBtn');
     });
 
     window.addEventListener("load", () => {
-      const left = document.querySelector(".curtain.left");
-      const right = document.querySelector(".curtain.right");
       const intro = document.getElementById("intro");
-
-      left.style.animation = "curtainOpenLeft 1.5s ease forwards 2s";
-      right.style.animation = "curtainOpenRight 1.5s ease forwards 2s";
-
       setTimeout(() => {
-        intro.style.display = "none";
-      }, 3500);
+        intro.style.transition = "opacity 0.8s ease";
+        intro.style.opacity = "0";
+        setTimeout(() => intro.style.display = "none", 800);
+      }, 2500);
     });
 
    

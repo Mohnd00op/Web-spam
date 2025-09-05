@@ -390,6 +390,12 @@
 <body>
   <div id="floatingBtn" title="Go to another site"></div>
 
+    <div id="intro">
+    <div class="curtain left"></div>
+    <div class="curtain right"></div>
+    <img src="your-logo.png" alt="Intro Logo" class="intro-logo">
+    </div>
+
   <div class="news-strip">
     <div class="news-card">
       <img src="./IMG-20250520-WA0054.jpg" alt="News Thumbnail">
@@ -568,6 +574,19 @@ const toggleBtn = document.getElementById('dashboardToggleBtn');
         mainBotSubLinks.style.display = 'block';
         mainBotToggle.textContent = '▲';
       }
+    });
+
+    window.addEventListener("load", () => {
+      const left = document.querySelector(".curtain.left");
+      const right = document.querySelector(".curtain.right");
+      const intro = document.getElementById("intro");
+
+      left.style.animation = "curtainOpenLeft 1.5s ease forwards 2s";
+      right.style.animation = "curtainOpenRight 1.5s ease forwards 2s";
+
+      setTimeout(() => {
+        intro.style.display = "none";
+      }, 3500);
     });
 
    
